@@ -32,53 +32,25 @@ o nome do vencedor. Caso não haja vencedor deverá ser impressa a palavra EMPAT
 <Strong>16.</Strong> Entrar com um número e informar se ele é ou não divisível por 5. 
 <hr>
 <Strong>17.</Strong> Escreva um algoritmo que, dada a idade de um nadador, classifique-o em uma das 
-seguintes categorias: 
+seguintes categorias:
 
-<br>Idade Categoria<br> 
-5 a 12 Infantil<br> 
-13 a 17 Juvenil<br> 
-18 a 25 Profissional<br>
-Demais Fora da Faixa  
+- 5 a 12  --> Infantil<br> 
+- 13 a 17 --> Juvenil<br> 
+- 18 a 25 --> Profissional<br>
+- Demais Fora da Faixa  
 <hr>
 <Strong>18.</Strong> Escreva um algoritmo que considere o reajuste salarial em determinada empresa de acordo 
 com as condições abaixo: 
 
-<br>Salário inferior a 500,00 o reajuste será de 15% <br>
-Salário igual ou acima de R$ 500,00 e até R$1000,00 o reajuste será de 10% <br>
-Salário acima de R$1000, 00 o reajuste será de 5% <br>
+- Salário inferior a 500,00 o reajuste será de 15% <br>
+- Salário igual ou acima de R$ 500,00 e até R$1000,00 o reajuste será de 10% <br>
+- Salário acima de R$1000, 00 o reajuste será de 5% <br>
 
 Imprima o valor do reajuste e o valor do novo salário. 
 <hr>
 <Strong>19.</Strong> Faça um algoritmo que leia a idade de uma pessoa e informe a sua classe eleitoral: 
 
-<br>não eleitor (abaixo de 16 anos) <br>
-eleitor obrigatório ( entre 18 e 65 anos) <br>
-eleitor facultativo ( entre 16 e 18 anos e maior de 65 anos) <br>
+- não eleitor (abaixo de 16 anos) <br>
+- eleitor obrigatório ( entre 18 e 65 anos) <br>
+- eleitor facultativo ( entre 16 e 18 anos e maior de 65 anos) <br>
 <hr>
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
