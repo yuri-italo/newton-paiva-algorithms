@@ -1,7 +1,8 @@
 import java.util.Scanner;
+
 public class BankAccount {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner leia = new Scanner(System.in);
         String nome, teclado;
         int contaCorrente, contaPoupanca, opcao;
@@ -15,11 +16,15 @@ public class BankAccount {
             nome = leia.nextLine();
 
             if (nome.matches(".*\\d.*") || !(nome.matches("[a-zA-Z.? ]*"))) {
-                System.out.println("[ERRO] O nome deve conter apenas letras!");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("           [ERRO] O nome deve conter apenas letras!           ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             } else if (nome.length() < 3) {
-                System.out.println("[ERRO] O nome deve conter pelo menos 3 letras!");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("        [ERRO] O nome deve conter pelo menos 3 letras!        ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             } else {
                 break;
             }
@@ -33,8 +38,10 @@ public class BankAccount {
                 contaCorrente = Integer.parseInt(teclado);
                 break;
             } else {
-                System.out.println("[ERRO] O número deve conter 5 dígitos numéricos");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("        [ERRO] O número deve conter 5 dígitos numéricos       ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             }
         }
 
@@ -46,8 +53,10 @@ public class BankAccount {
                 saldoCC = Float.parseFloat(teclado);
                 break;
             } else {
-                System.out.println("[ERRO] Informe um valor válido");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("                [ERRO] Informe um valor válido                ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             }
         }
 
@@ -57,10 +66,19 @@ public class BankAccount {
 
             if (teclado.matches(".*\\d.*") && teclado.length() == 5) {
                 contaPoupanca = Integer.parseInt(teclado);
-                break;
+                if(contaCorrente == contaPoupanca) {
+                    System.out.println("--------------------------------------------------------------");
+                    System.out.println("       [ERRO] O número das contas devem ser diferentes!       ");
+                    System.out.println("--------------------------------------------------------------");
+                    Thread.sleep(1000);
+                } else {
+                    break;
+                }
             } else {
-                System.out.println("[ERRO] O número deve conter 5 dígitos numéricos");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("        [ERRO] O número deve conter 5 dígitos numéricos       ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             }
         }
 
@@ -71,30 +89,45 @@ public class BankAccount {
             if(teclado.matches(".*\\d.*")) {
                 saldoCP = Float.parseFloat(teclado);
                 if (saldoCP < 0) {
-                    System.out.println("[ERRO] Sua conta Poupança não pode ficar negativa");
                     System.out.println("--------------------------------------------------------------");
+                    System.out.println("       [ERRO] Sua conta Poupança não pode ficar negativa      ");
+                    System.out.println("--------------------------------------------------------------");
+                    Thread.sleep(1000);
                 } else {
                     break;
                 }
             } else {
-                System.out.println("[ERRO] Informe um valor válido");
                 System.out.println("--------------------------------------------------------------");
+                System.out.println("                [ERRO] Informe um valor válido                ");
+                System.out.println("--------------------------------------------------------------");
+                Thread.sleep(1000);
             }
         }
 
 
         while (true) {
-            System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            System.out.println("                QUAL OPERAÇÃO DESEJA REALIZAR?                ");
-            System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            System.out.println("1 \t\t------------>\t\t Creditar");
-            System.out.println("2 \t\t------------>\t\t Debitar");
-            System.out.println("3 \t\t------------>\t\t Transferir");
-            System.out.println("4 \t\t------------>\t\t Saldo");
-            System.out.println("5 \t\t------------>\t\t Sair");
-            System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            System.out.print("Escolha uma opção: ");
-            opcao = leia.nextInt();
+            while (true) {
+                System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                System.out.println("                QUAL OPERAÇÃO DESEJA REALIZAR?                ");
+                System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                System.out.println("    1 \t\t------------>\t\t Creditar");
+                System.out.println("    2 \t\t------------>\t\t Debitar");
+                System.out.println("    3 \t\t------------>\t\t Transferir");
+                System.out.println("    4 \t\t------------>\t\t Saldo");
+                System.out.println("    5 \t\t------------>\t\t Sair");
+                System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                System.out.print("Escolha uma opção: ");
+                teclado = leia.nextLine();
+                if(teclado.matches(".*\\d.*")) {
+                    opcao = Integer.parseInt(teclado);
+                    break;
+                } else {
+                    System.out.println("--------------------------------------------------------------");
+                    System.out.println("                [ERRO] Digite uma opção válida!               ");
+                    System.out.println("--------------------------------------------------------------");
+                    Thread.sleep(1000);
+                }
+            }
 
             if (opcao == 5) {
                 break;
@@ -102,10 +135,10 @@ public class BankAccount {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-                    System.out.println("                 QUAL CONTA DESEJA CREDITAR?                  ");
-                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     while(true) {
+                        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                        System.out.println("                 QUAL CONTA DESEJA CREDITAR?                  ");
+                        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Poupança");
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -116,21 +149,50 @@ public class BankAccount {
                             System.out.println("--------------------------------------------------------------");
                             System.out.println("               [ERRO] Digite uma opção válida!                ");
                             System.out.println("--------------------------------------------------------------");
+                            Thread.sleep(1000);
                         } else {
                             break;
                         }
                     }
 
                     if (opcao == 1) {
-                        System.out.print("Qual o valor a creditar na sua Conta Corrente " + contaCorrente + "?  -> ");
-                        deposito = leia.nextFloat();
+                        while (true) {
+                            System.out.print("Qual o valor a creditar na sua Conta Corrente " + contaCorrente + "?  -> ");
+                            deposito = leia.nextFloat();
+                            if (deposito < 0) {
+                                System.out.println("--------------------------------------------------------------");
+                                System.out.println("       [ERRO] Não é possível creditar um valor negativo!      ");
+                                System.out.println("--------------------------------------------------------------");
+                                Thread.sleep(1000);
+                            } else {
+                                break;
+                            }
+                        }
+                        leia.nextLine();
                         saldoCC += deposito;
-                        System.out.println("Saldo atual na Conta Corrente [" + contaCorrente + "] -> " + saldoCC);
+                        System.out.println("--------------------------------------------------------------");
+                        System.out.printf("Saldo atual na Conta Corrente [%d] -> %.2f\n", contaCorrente, saldoCC);
+                        System.out.println("--------------------------------------------------------------");
+                        Thread.sleep(1000);
                     } else {
-                        System.out.print("Qual o valor a creditar na sua Conta Poupança [" + contaPoupanca + "]?  -> ");
-                        deposito = leia.nextFloat();
+                        while (true) {
+                            System.out.print("Qual o valor a creditar na sua Conta Poupança [" + contaPoupanca + "]?  -> ");
+                            deposito = leia.nextFloat();
+                            if (deposito < 0) {
+                                System.out.println("--------------------------------------------------------------");
+                                System.out.println("       [ERRO] Não é possível creditar um valor negativo!      ");
+                                System.out.println("--------------------------------------------------------------");
+                                Thread.sleep(1000);
+                            } else {
+                                break;
+                            }
+                        }
+                        leia.nextLine();
                         saldoCP += deposito;
-                        System.out.println("Saldo atual na Conta Poupança [" + contaPoupanca + "] -> " + saldoCP);
+                        System.out.println("--------------------------------------------------------------");
+                        System.out.printf("Saldo atual na Conta Poupança [%d] -> %.2f\n", contaPoupanca, saldoCP);
+                        System.out.println("--------------------------------------------------------------");
+                        Thread.sleep(1000);
                     }
                     break;
                 case 2:
@@ -140,11 +202,14 @@ public class BankAccount {
                     while (true) {
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Poupança");
+                        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.print("Escolha uma opção: ");
                         opcao = leia.nextInt();
 
                         if (opcao < 1 || opcao > 2) {
-                            System.out.println("Digite uma opção válida!");
+                            System.out.println("--------------------------------------------------------------");
+                            System.out.println("               [ERRO] Digite uma opção válida!                ");
+                            System.out.println("--------------------------------------------------------------");
                         } else {
                             break;
                         }
@@ -160,10 +225,14 @@ public class BankAccount {
                             System.out.print("Qual o valor a debitar na Conta Poupança [" + contaPoupanca + "]? -> ");
                             debito = leia.nextFloat();
                             if (saldoCP - debito < 0) {
-                                System.out.println("Sua Conta Poupança não pode ficar negativa!\n" +
-                                        "Seu saldo atual é: " + saldoCP + ". Tente novamente.");
+                                System.out.println("--------------------------------------------------------------");
+                                System.out.println("         Sua Conta Poupança não pode ficar negativa!          ");
+                                System.out.println("     Seu saldo atual é: " + saldoCP + ". Tente novamente.     ");
+                                System.out.println("--------------------------------------------------------------");
                             } else if (saldoCP == 0 && debito > 0) {
-                                System.out.println("Seu saldo é: " + saldoCP + ". Adicione fundos e tente novamente!");
+                                System.out.println("--------------------------------------------------------------");
+                                System.out.println("Seu saldo é: " + saldoCP + ". Não é possível realizar débito!");
+                                System.out.println("--------------------------------------------------------------");
                             } else {
                                 saldoCP -= debito;
                                 System.out.println("Saldo atual na Conta Poupança [" + contaPoupanca + "] -> " + saldoCP);
@@ -171,6 +240,7 @@ public class BankAccount {
                             }
                         }
                     }
+                    break;
                 case 3:
                     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     System.out.println("                      ESCOLHA UMA OPÇÃO                       ");
@@ -178,6 +248,7 @@ public class BankAccount {
                     while (true) {
                         System.out.println("1 - Conta Corrente para Conta Poupança");
                         System.out.println("2 - Conta Poupança para Conta Corrente");
+                        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.print("Escolha uma opção: ");
                         opcao = leia.nextInt();
 
@@ -227,6 +298,7 @@ public class BankAccount {
                     System.out.println("--------------------------------------------------------------");
                     System.out.println("                [ERRO] Digite uma opção válida!               ");
                     System.out.println("--------------------------------------------------------------");
+                    Thread.sleep(1000);
             }
         }
         System.out.println("--------------------------------------------------------------");
