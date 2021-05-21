@@ -12,7 +12,7 @@ public class BankAccount {
         System.out.println("                      BEM-VINDO AO BANCO                      ");
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
         while(true) {
-            System.out.print("Entre com o nome do cliente: ");
+            System.out.print("Nome do cliente: ");
             nome = leia.nextLine();
 
             if (nome.matches(".*\\d.*") || !(nome.matches("[a-zA-Z.? ]*"))) {
@@ -26,16 +26,18 @@ public class BankAccount {
                 System.out.println("--------------------------------------------------------------");
                 Thread.sleep(1000);
             } else {
+                System.out.println("--------------------------------------------------------------");
                 break;
             }
         }
 
         while (true) {
-            System.out.print("Entre com o número da Conta Corrente: ");
+            System.out.print("Número da Conta Corrente: ");
             teclado = leia.nextLine();
 
             if (teclado.matches(".*\\d.*") && teclado.length() == 5) {
                 contaCorrente = Integer.parseInt(teclado);
+                System.out.println("--------------------------------------------------------------");
                 break;
             } else {
                 System.out.println("--------------------------------------------------------------");
@@ -46,11 +48,12 @@ public class BankAccount {
         }
 
         while (true) {
-            System.out.print("Entre com o saldo inicial da Conta Corrente [" + contaCorrente + "]: ");
+            System.out.print("Saldo inicial da Conta Corrente [" + contaCorrente + "]: R$ ");
             teclado = leia.nextLine();
 
             if(teclado.matches(".*\\d.*")) {
                 saldoCC = Float.parseFloat(teclado);
+                System.out.println("--------------------------------------------------------------");
                 break;
             } else {
                 System.out.println("--------------------------------------------------------------");
@@ -61,7 +64,7 @@ public class BankAccount {
         }
 
         while (true) {
-            System.out.print("Entre com o número da Conta Poupança: ");
+            System.out.print("Número da Conta Poupança: ");
             teclado = leia.nextLine();
 
             if (teclado.matches(".*\\d.*") && teclado.length() == 5) {
@@ -72,6 +75,7 @@ public class BankAccount {
                     System.out.println("--------------------------------------------------------------");
                     Thread.sleep(1000);
                 } else {
+                    System.out.println("--------------------------------------------------------------");
                     break;
                 }
             } else {
@@ -83,7 +87,7 @@ public class BankAccount {
         }
 
         while (true) {
-            System.out.print("Entre com o saldo inicial da Conta Poupança [" + contaPoupanca + "]: ");
+            System.out.print("Saldo inicial da Conta Poupança [" + contaPoupanca + "]: R$ ");
             teclado = leia.nextLine();
 
             if(teclado.matches(".*\\d.*")) {
@@ -94,6 +98,7 @@ public class BankAccount {
                     System.out.println("--------------------------------------------------------------");
                     Thread.sleep(1000);
                 } else {
+                    System.out.println("--------------------------------------------------------------");
                     break;
                 }
             } else {
@@ -104,6 +109,7 @@ public class BankAccount {
             }
         }
 
+        Thread.sleep(1500);
 
         while (true) {
             while (true) {
@@ -142,13 +148,14 @@ public class BankAccount {
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Poupança");
+                        System.out.println("3 - Cancelar");
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.print("Escolha uma opção: ");
                         teclado = leia.nextLine();
 
                         if(teclado.matches(".*\\d.*")) {
                             opcao = Integer.parseInt(teclado);
-                            if(opcao < 1 || opcao > 2) {
+                            if(opcao < 1 || opcao > 3) {
                                 System.out.println("--------------------------------------------------------------");
                                 System.out.println("               [ERRO] Digite uma opção válida!                ");
                                 System.out.println("--------------------------------------------------------------");
@@ -164,9 +171,11 @@ public class BankAccount {
                         }
                     }
 
+                    if (opcao == 3) break;
+
                     if (opcao == 1) {
                         while (true) {
-                            System.out.print("Qual o valor a creditar na sua Conta Corrente " + contaCorrente + "?  -> ");
+                            System.out.print("Valor a creditar na sua Conta Corrente [" + contaCorrente + "]: R$ ");
                             teclado = leia.nextLine();
 
                             if(teclado.matches(".*\\d.*")) {
@@ -179,9 +188,29 @@ public class BankAccount {
                                 } else {
                                     saldoCC += deposito;
                                     System.out.println("--------------------------------------------------------------");
-                                    System.out.printf("Saldo atual na Conta Corrente [%d] -> %.2f\n", contaCorrente, saldoCC);
+                                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f\n", contaCorrente, saldoCC);
                                     System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -193,7 +222,7 @@ public class BankAccount {
                         }
                     } else {
                         while (true) {
-                            System.out.print("Qual o valor a creditar na sua Conta Poupança [" + contaPoupanca + "]?  -> ");
+                            System.out.print("Valor a creditar na sua Conta Poupança [" + contaPoupanca + "]: R$ ");
                             teclado = leia.nextLine();
 
                             if(teclado.matches(".*\\d.*")) {
@@ -206,9 +235,29 @@ public class BankAccount {
                                 } else {
                                     saldoCP += deposito;
                                     System.out.println("--------------------------------------------------------------");
-                                    System.out.printf("Saldo atual na Conta Poupança [%d] -> %.2f\n", contaPoupanca, saldoCP);
+                                    System.out.printf("Saldo atual na Conta Poupança [%d]: R$ %.2f\n", contaPoupanca, saldoCP);
                                     System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -227,13 +276,14 @@ public class BankAccount {
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Poupança");
+                        System.out.println("3 - Cancelar");
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.print("Escolha uma opção: ");
                         teclado = leia.nextLine();
 
                         if(teclado.matches(".*\\d.*")) {
                             opcao = Integer.parseInt(teclado);
-                            if (opcao < 1 || opcao > 2) {
+                            if (opcao < 1 || opcao > 3) {
                                 System.out.println("--------------------------------------------------------------");
                                 System.out.println("               [ERRO] Digite uma opção válida!                ");
                                 System.out.println("--------------------------------------------------------------");
@@ -249,9 +299,11 @@ public class BankAccount {
                         }
                     }
 
+                    if (opcao == 3) break;
+
                     if (opcao == 1) {
                         while(true) {
-                            System.out.print("Qual o valor a debitar na Conta Corrente [" + contaCorrente + "]? -> ");
+                            System.out.print("Valor a debitar na Conta Corrente [" + contaCorrente + "]: R$ ");
                             teclado = leia.nextLine();
 
                             if(teclado.matches(".*\\d.*")) {
@@ -264,9 +316,29 @@ public class BankAccount {
                                 } else {
                                     saldoCC -= debito;
                                     System.out.println("--------------------------------------------------------------");
-                                    System.out.println("Saldo atual na Conta Corrente [" + contaCorrente + "] -> " + saldoCC);
-                                    System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+                                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f", contaCorrente, saldoCC);
+                                    System.out.println("\n--------------------------------------------------------------");
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -278,7 +350,7 @@ public class BankAccount {
                         }
                     } else {
                         while (true) {
-                            System.out.print("Qual o valor a debitar na Conta Poupança [" + contaPoupanca + "]? -> ");
+                            System.out.print("Valor a debitar na Conta Poupança [" + contaPoupanca + "]: R$ ");
                             teclado = leia.nextLine();
 
                             if(teclado.matches(".*\\d.*")) {
@@ -291,20 +363,40 @@ public class BankAccount {
                                 } else if (saldoCP - debito < 0) {
                                     System.out.println("--------------------------------------------------------------");
                                     System.out.println("Sua Conta Poupança não pode ficar negativa!                   ");
-                                    System.out.println("Seu saldo atual é: " + saldoCP + " Tente novamente.           ");
-                                    System.out.println("--------------------------------------------------------------");
+                                    System.out.printf("Seu saldo atual é: R$ %.2f. Tente novamente!", saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
                                     Thread.sleep(1000);
                                 } else if (saldoCP == 0 && debito > 0) {
                                     System.out.println("--------------------------------------------------------------");
-                                    System.out.println("Seu saldo é: " + saldoCP + ". Não é possível realizar débito! ");
-                                    System.out.println("--------------------------------------------------------------");
+                                    System.out.printf("Seu saldo é: R$ %.2f. Não é possível realizar débito!", saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
                                     Thread.sleep(1000);
                                 } else {
                                     saldoCP -= debito;
                                     System.out.println("--------------------------------------------------------------");
-                                    System.out.println("Saldo atual na Conta Poupança [" + contaPoupanca + "] -> " + saldoCP);
-                                    System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+                                    System.out.printf("Saldo atual na Conta Poupança [%d]: R$ %.2f", contaPoupanca, saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -323,13 +415,15 @@ public class BankAccount {
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.println("1 - Conta Corrente para Conta Poupança");
                         System.out.println("2 - Conta Poupança para Conta Corrente");
+                        System.out.println("3 - Cancelar");
                         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         System.out.print("Escolha uma opção: ");
                         teclado = leia.nextLine();
 
                         if(teclado.matches(".*\\d.*")) {
+
                             opcao = Integer.parseInt(teclado);
-                            if(opcao < 1 || opcao > 2) {
+                            if(opcao < 1 || opcao > 3) {
                                 System.out.println("--------------------------------------------------------------");
                                 System.out.println("               [ERRO] Digite uma opção válida!                ");
                                 System.out.println("--------------------------------------------------------------");
@@ -345,9 +439,11 @@ public class BankAccount {
                         }
                     }
 
+                    if(opcao == 3) break;
+
                     if(opcao == 1) {
                         while (true) {
-                            System.out.print("Qual valor deseja transferir para a Conta Poupança? ");
+                            System.out.print("Qual valor deseja transferir para a Conta Poupança? R$ ");
                             teclado = leia.nextLine();
 
                             if (teclado.matches(".*\\d.*")) {
@@ -362,20 +458,60 @@ public class BankAccount {
                                     saldoCP += transferencia;
                                     System.out.println("--------------------------------------------------------------");
                                     System.out.println("Valor transferido com sucesso!");
-                                    System.out.println("Conta Corrente " + contaCorrente + " está com um saldo negativo de " + saldoCC);
-                                    System.out.println("Saldo atual na Conta Poupança " + contaPoupanca + " -> " + saldoCP);
-                                    System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+                                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f", contaCorrente, saldoCC);
+                                    System.out.printf("\nSaldo atual na Conta Poupança [%d]: R$ %.2f", contaPoupanca, saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 } else {
                                     saldoCC -= transferencia;
                                     saldoCP += transferencia;
                                     System.out.println("--------------------------------------------------------------");
                                     System.out.println("Valor transferido com sucesso!");
-                                    System.out.println("Saldo atual na Conta Corrente " + contaCorrente + " -> " + saldoCC);
-                                    System.out.println("Saldo atual na Conta Corrente " + contaPoupanca + " -> " + saldoCP);
-                                    System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+                                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f", contaCorrente, saldoCC);
+                                    System.out.printf("\nSaldo atual na Conta Poupança [%d]: R$ %.2f", contaPoupanca, saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -387,7 +523,7 @@ public class BankAccount {
                         }
                     } else {
                         while (true) {
-                            System.out.print("Qual valor deseja transferir para a Conta Corrente? ");
+                            System.out.print("Qual valor deseja transferir para a Conta Corrente? R$ ");
                             teclado = leia.nextLine();
 
                             if(teclado.matches(".*\\d.*")) {
@@ -400,18 +536,38 @@ public class BankAccount {
                                 } else if (saldoCP - transferencia < 0) {
                                     System.out.println("--------------------------------------------------------------");
                                     System.out.println("Sua Conta Poupança não pode ficar negativa");
-                                    System.out.println("Seu saldo atual é " + saldoCP);
-                                    System.out.println("--------------------------------------------------------------");
+                                    System.out.printf("Seu saldo atual é: R$ %.2f", saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
                                     Thread.sleep(1000);
                                 } else {
                                     saldoCP -= transferencia;
                                     saldoCC += transferencia;
                                     System.out.println("--------------------------------------------------------------");
                                     System.out.println("Valor transferido com sucesso!");
-                                    System.out.println("Saldo atual na Conta Corrente " + contaCorrente + " -> " + saldoCC);
-                                    System.out.println("Saldo atual na Conta Corrente " + contaPoupanca + " -> " + saldoCP);
-                                    System.out.println("--------------------------------------------------------------");
-                                    Thread.sleep(1000);
+                                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f", contaCorrente, saldoCC);
+                                    System.out.printf("\nSaldo atual na Conta Poupança [%d]: R$ %.2f", contaPoupanca, saldoCP);
+                                    System.out.println("\n--------------------------------------------------------------");
+
+                                    while(true) {
+                                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                                        teclado = leia.nextLine();
+                                        if(teclado.matches(".*\\d.*")) {
+                                            opcao = Integer.parseInt(teclado);
+                                            if(opcao != 3) {
+                                                System.out.println("--------------------------------------------------------------");
+                                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                                System.out.println("--------------------------------------------------------------");
+                                                Thread.sleep(1000);
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            System.out.println("--------------------------------------------------------------");
+                                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                                            System.out.println("--------------------------------------------------------------");
+                                            Thread.sleep(1000);
+                                        }
+                                    }
                                     break;
                                 }
                             } else {
@@ -424,14 +580,34 @@ public class BankAccount {
                     }
                     break;
                 case 4:
-                    System.out.println("\nSr(a). " + nome + " o saldo da suas contas é:");
+                    System.out.println("\nSr(a). " + nome + " os saldos das suas contas são:");
                     System.out.println("--------------------------------------------------------------");
                     System.out.println("             SALDO CONTA CORRENTE E CONTA POUPANÇA            ");
                     System.out.println("--------------------------------------------------------------");
-                    System.out.println("Saldo atual na Conta Corrente " + contaCorrente + " -> " + saldoCC);
-                    System.out.println("Saldo atual na Conta Poupança " + contaPoupanca + " -> " + saldoCP);
-                    System.out.println("--------------------------------------------------------------");
-                    Thread.sleep(1000);
+                    System.out.printf("Saldo atual na Conta Corrente [%d]: R$ %.2f", contaCorrente, saldoCC);
+                    System.out.printf("\nSaldo atual na Conta Poupança [%d]: R$ %.2f", contaPoupanca, saldoCP);
+                    System.out.println("\n--------------------------------------------------------------");
+
+                    while (true) {
+                        System.out.print("Digite 3 para voltar ao Menu Principal: ");
+                        teclado = leia.nextLine();
+                        if (teclado.matches(".*\\d.*")) {
+                            opcao = Integer.parseInt(teclado);
+                            if (opcao != 3) {
+                                System.out.println("--------------------------------------------------------------");
+                                System.out.println("               [ERRO] Digite uma opção válida!                ");
+                                System.out.println("--------------------------------------------------------------");
+                                Thread.sleep(1000);
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("--------------------------------------------------------------");
+                            System.out.println("                  [ERRO] Formato inválido!                    ");
+                            System.out.println("--------------------------------------------------------------");
+                            Thread.sleep(1000);
+                        }
+                    }
                     break;
                 default:
                     System.out.println("--------------------------------------------------------------");
