@@ -23,9 +23,9 @@ public class Ex033 {
         System.out.println("----------------------------------------------");
         System.out.println("                    RESULTS                   ");
         System.out.println("----------------------------------------------");
-        System.out.println("The numbers' SUM is " + sum);
+        System.out.printf("The numbers' SUM is %.2f\n", sum);
         System.out.printf("The numbers' AVERAGE is %.2f\n",average);
-        System.out.println("The numbers' DOUBLE is " + x2Double);
+        System.out.printf("The numbers' DOUBLE is %.2f\n", x2Double);
         System.out.println("----------------------------------------------");
     }
 }
