@@ -4,9 +4,9 @@
 O algoritmo não poderá aceitar o número zero. Mostrar: 
 
 a. quantidade de números pares<br> 
-b. quantidade de números impares<br> 
+b. quantidade de números ímpares<br> 
 c. soma de todos os valores pares<br> 
-d. soma de todos os valores impares<br> 
+d. soma de todos os valores ímpares<br> 
 <hr>
 <Strong>40.</Strong> Elaborar um algoritmo que leia 5 valores inteiros. 
 O algoritmo não poderá aceitar o número zero. Mostrar: 
@@ -18,7 +18,7 @@ b. média dos valores negativos<br>
 O algoritmo não poderá aceitar o número zero. Mostrar: 
 
 a. média dos valores pares<br> 
-b. média dos valores impares<br> 
+b. média dos valores ímpares<br> 
 <hr>
 <Strong>42.</Strong> Elaborar um algoritmo que mostre: 
 
