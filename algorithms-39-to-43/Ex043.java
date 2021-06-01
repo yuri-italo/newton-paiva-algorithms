@@ -41,7 +41,7 @@ public class Ex043 {
 
             totalSum += sum;
 
-            if (sum/3 >= 60) {
+            if (sum >= 60) {
                 approvedQtt++;
                 System.out.println("----------------------------------------------");
                 System.out.println(name + " is APPROVED!");
