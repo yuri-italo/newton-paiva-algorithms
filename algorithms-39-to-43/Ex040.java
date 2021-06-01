@@ -26,31 +26,23 @@ public class Ex040 {
                 posSum += num;
             }
         }
+        System.out.println("----------------------------------------------");
+        System.out.println("                    RESULTS                   ");
+        System.out.println("----------------------------------------------");
         if(qttNeg == 0) {
             posAverage = posSum/qttPos;
-            System.out.println("----------------------------------------------");
-            System.out.println("                    RESULTS                   ");
-            System.out.println("----------------------------------------------");
             System.out.printf("Positive's average is %.2f\n", posAverage);
             System.out.println("There is no negative number.");
-            System.out.println("----------------------------------------------");
         } else if (qttPos == 0) {
             negAverage = negSum/qttNeg;
-            System.out.println("----------------------------------------------");
-            System.out.println("                    RESULTS                   ");
-            System.out.println("----------------------------------------------");
             System.out.println("There is no positive number.");
             System.out.printf("Negative's average is %.2f\n", negAverage);
-            System.out.println("----------------------------------------------");
         } else {
             posAverage = posSum/qttPos;
             negAverage = negSum/qttNeg;
-            System.out.println("----------------------------------------------");
-            System.out.println("                    RESULTS                   ");
-            System.out.println("----------------------------------------------");
             System.out.printf("Positive's average is %.2f\n", posAverage);
             System.out.printf("Negative's average is %.2f\n", negAverage);
-            System.out.println("----------------------------------------------");
         }
+        System.out.println("----------------------------------------------");
     }
 }
