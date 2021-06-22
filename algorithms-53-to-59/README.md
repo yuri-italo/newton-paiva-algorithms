@@ -24,3 +24,4 @@ preços. Imprima o array atualizado.
 <hr>
 <Strong>59.</Strong> Escreva um algoritmo que leia um array de 5 elementos inteiros. Encontre e 
 mostre o menor elemento e sua posição no array. 
+<hr>
