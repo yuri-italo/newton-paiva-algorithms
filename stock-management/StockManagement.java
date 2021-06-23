@@ -192,6 +192,11 @@ public class StockManagement {
                                                     System.out.println("--------------------------------------------------------------");
                                                     System.out.println("       [ERRO] A saída de estoque não pode ser negativa!       ");
                                                     System.out.println("--------------------------------------------------------------");
+                                                } else if (saida > estoqueJ) {
+                                                    System.out.println("--------------------------------------------------------------");
+                                                    System.out.println("   [ERRO] Não é possível retirar essa quantidade do estoque!  ");
+                                                    System.out.println("        Tente retirar uma quantidade menor ou digite 0.       ");
+                                                    System.out.println("--------------------------------------------------------------");
                                                 } else {
                                                     estoqueJ -= saida;
                                                     System.out.println("--------------------------------------------------------------");
@@ -215,6 +220,11 @@ public class StockManagement {
                                                 if(saida < 0) {
                                                     System.out.println("--------------------------------------------------------------");
                                                     System.out.println("       [ERRO] A saída de estoque não pode ser negativa!       ");
+                                                    System.out.println("--------------------------------------------------------------");
+                                                } else if (saida > estoqueP) {
+                                                    System.out.println("--------------------------------------------------------------");
+                                                    System.out.println("   [ERRO] Não é possível retirar essa quantidade do estoque!  ");
+                                                    System.out.println("        Tente retirar uma quantidade menor ou digite 0.       ");
                                                     System.out.println("--------------------------------------------------------------");
                                                 } else {
                                                     estoqueP -= saida;
@@ -275,6 +285,7 @@ public class StockManagement {
                                                 } else if(transferencia > estoqueJ) {
                                                     System.out.println("--------------------------------------------------------------");
                                                     System.out.println("Impossível transferir, estoque insuficiente!                  ");
+                                                    System.out.println("Tente retirar uma quantidade menor ou digite 0."               );
                                                     System.out.printf("Estoque atual em JATIBOCA: %.3f Kg\n", estoqueJ);
                                                     System.out.println("--------------------------------------------------------------");
                                                 } else {
@@ -307,6 +318,7 @@ public class StockManagement {
                                                 } else if(transferencia > estoqueP) {
                                                     System.out.println("--------------------------------------------------------------");
                                                     System.out.println("Impossível transferir, estoque insuficiente!                  ");
+                                                    System.out.println("Tente retirar uma quantidade menor ou digite 0."               );
                                                     System.out.printf("Estoque atual em PONTAL: %.3f Kg\n", estoqueP);
                                                     System.out.println("--------------------------------------------------------------");
                                                 } else {
