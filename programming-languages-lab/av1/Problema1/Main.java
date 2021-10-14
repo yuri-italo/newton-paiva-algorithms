@@ -16,12 +16,12 @@ public class Main {
         int maior = 0;
 
         for (var palavra : palavras)
-            if (palavra.length() > maior)
-                maior = palavra.length();
+            if (palavra.trim().length() > maior)
+                maior = palavra.trim().length();
 
         System.out.print("A(s) maior(es) palavra(s) do conjunto é(são): ");
         for (var palavra : palavras)
-            if (palavra.length() == maior)
+            if (palavra.trim().length() == maior)
                 System.out.print(palavra + " ");
 
         System.out.println("\nTamanho: " + maior);
