@@ -1,4 +1,4 @@
-# Problema 1:
+# Problema 1 (2pts):
 
 Entrada: um caminho de diretório informado pelo usuário<br>
 Saída: exibir todos os arquivos do diretório e sub-diretoŕios (usando **recursão**)
